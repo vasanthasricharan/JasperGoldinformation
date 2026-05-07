@@ -1,0 +1,567 @@
+:root {
+    --bg: #050608;
+    --card-bg: rgba(18, 20, 27, 0.9);
+    --cyan: #00f2ff;
+    --purple: #8f00ff;
+    --text: #e0e0e0;
+    --dim-text: #94a3b8;
+    --border: rgba(0, 242, 255, 0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* --- SLIDING WINDOW ENGINE --- */
+html {
+    scroll-behavior: smooth;
+    /* This enables the snap effect on the whole page */
+    scroll-snap-type: y mandatory;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.4;
+    overflow-x: hidden;
+}
+
+/* --- BACKGROUND --- */
+.bg-grid {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: -1;
+    mask-image: radial-gradient(circle, black, transparent 90%);
+    opacity: 0.2;
+}
+
+/* --- SNAP SECTIONS --- */
+/* This makes the Hero and Grid feel like separate "slides" */
+section,
+.hero,
+.grid-section {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+}
+
+/* --- HERO (Slide 1) --- */
+.hero {
+    height: 100vh;
+    /* Full viewport for the first page effect */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.hero h1 {
+    font-size: clamp(3rem, 8vw, 5rem);
+    /* Increased size for impact */
+    background: linear-gradient(90deg, var(--cyan), var(--purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    margin-bottom: 15px;
+
+    /* Sliding Up Animation */
+    opacity: 0;
+    transform: translateY(50px);
+    animation: slideUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.hero p {
+    color: var(--dim-text);
+    font-size: 1.2rem;
+    max-width: 700px;
+    opacity: 0;
+    animation: fadeIn 1.2s ease forwards 0.8s;
+}
+
+/* Scroll Indicator */
+.hero::after {
+    content: "SCROLL TO EXPLORE ↓";
+    position: absolute;
+    bottom: 30px;
+    font-family: 'JetBrains Mono';
+    font-size: 0.7rem;
+    color: var(--cyan);
+    letter-spacing: 2px;
+    animation: bounce 2s infinite;
+}
+
+/* --- GRID SECTION (Slide 2) --- */
+.grid-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 40px 0;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    width: 100%;
+}
+
+.glass {
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.matrix-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+
+    gap: 25px;
+    width: 100%;
+    height: 75vh;
+    /* Makes grid occupy most of screen */
+
+    margin-top: 30px;
+}
+
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+
+    padding: 40px 20px;
+    min-height: 220px;
+
+    text-align: center;
+    border-radius: 16px;
+    cursor: pointer;
+
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    border-color: var(--cyan);
+    box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
+    background: rgba(0, 242, 255, 0.05);
+}
+
+.card i {
+    font-size: 2.5rem;
+    color: var(--cyan);
+    margin-bottom: 10px;
+}
+
+.card h3 {
+    font-size: 1.4rem;
+    color: #fff;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+}
+
+.card p {
+    font-size: 1rem;
+    color: var(--dim-text);
+}
+
+/* TABLET LAYOUT */
+@media (max-width: 1024px) {
+    .matrix-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+    }
+}
+
+/* MOBILE LAYOUT */
+@media (max-width: 600px) {
+    .matrix-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        padding: 15px;
+    }
+}
+
+/* --- SUB-PAGES --- */
+.page {
+    display: none;
+    padding: 40px 20px;
+    min-height: 100vh;
+    animation: fadeIn 0.4s ease;
+}
+
+.back-btn {
+    background: none;
+    border: 1px solid var(--cyan);
+    color: var(--cyan);
+    padding: 8px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 25px;
+    font-family: 'JetBrains Mono';
+    font-size: 0.8rem;
+    transition: 0.3s;
+}
+
+.back-btn:hover {
+    background: var(--cyan);
+    color: #000;
+}
+
+.content-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 30px;
+    align-items: start;
+}
+
+.video-box {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #000;
+    border: 1px solid var(--purple);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(143, 0, 255, 0.1);
+}
+
+.chip-viz {
+    font-family: 'JetBrains Mono';
+    background: #0a0c10;
+    padding: 15px;
+    border-radius: 5px;
+    color: #a6e22e;
+    font-size: 0.85rem;
+    border-left: 3px solid var(--cyan);
+    margin-top: 15px;
+}
+
+/* --- ANIMATIONS --- */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+        opacity: 0.3;
+    }
+
+    40% {
+        transform: translateY(-10px);
+        opacity: 1;
+    }
+
+    60% {
+        transform: translateY(-5px);
+        opacity: 1;
+    }
+}
+
+/* --- FULL SCREEN TABLE STYLES --- */
+.comparison-slide {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.table-headline {
+    text-align: center;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    margin-bottom: 20px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.table-container {
+    width: 100%;
+    padding: 20px;
+    border: 1px solid var(--border);
+}
+
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: clamp(0.8rem, 1.5vw, 1.1rem);
+}
+
+.comparison-table th {
+    color: var(--cyan);
+    text-align: left;
+    padding: 15px;
+    border-bottom: 2px solid var(--purple);
+    font-family: 'JetBrains Mono';
+    text-transform: uppercase;
+}
+
+.comparison-table td {
+    padding: 18px 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.comparison-table .label {
+    color: var(--cyan);
+    font-weight: 700;
+    width: 25%;
+}
+
+.accent-cell {
+    color: #fff;
+    font-weight: 500;
+    background: rgba(143, 0, 255, 0.05);
+    border-left: 2px solid var(--purple);
+}
+
+/* Row Hover Glow */
+.comparison-table tbody tr:hover {
+    background: rgba(0, 242, 255, 0.03);
+    transition: background 0.3s ease;
+}
+
+@media (max-width: 768px) {
+
+    .comparison-table th,
+    .comparison-table td {
+        padding: 10px;
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .content-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+}
+
+/* --- TEAM INFO SECTION --- */
+
+.team-slide {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 0;
+}
+
+.team-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+    margin: 40px auto 0 auto;
+    max-width: 850px;
+}
+
+.team-card {
+    flex: 0 1 240px;
+    text-align: center;
+    background: none;
+    border: none;
+}
+
+.team-card img {
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--cyan);
+    margin-bottom: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.team-card h3 {
+    color: #fff;
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+}
+
+.team-card p {
+    color: var(--dim-text);
+    font-size: 0.85rem;
+}
+
+.team-card:hover img {
+    box-shadow: 0 0 20px rgba(0, 242, 255, 0.5);
+    border-color: #fff;
+}
+
+.team-card:hover {
+    transform: translateY(-10px);
+}
+
+/* Staggered Animation Delays */
+.team-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.team-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.team-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.team-card:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.team-card:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .team-wrapper {
+        gap: 30px;
+    }
+
+    .team-card img {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+/* --- PROJECT DETAILS SECTION --- */
+
+/* --- PROJECT DETAILS SECTION (UPDATED) --- */
+.project-slide {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.project-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* Split into two equal halves */
+    gap: 40px;
+    padding: 40px;
+    align-items: center;
+    margin-top: 30px;
+    border-radius: 20px;
+}
+
+.project-image img {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    box-shadow: 0 0 20px rgba(0, 242, 255, 0.1);
+}
+
+.project-info {
+    text-align: left;
+}
+
+.project-info h3 {
+    color: var(--cyan);
+    margin-bottom: 15px;
+    font-family: 'JetBrains Mono';
+    font-size: 1.4rem;
+}
+
+.problem-text {
+    font-size: 1rem;
+    color: var(--dim-text);
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.download-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-start;
+    /* Aligns buttons to the left */
+}
+
+.download-btn {
+    text-decoration: none;
+    padding: 12px 25px;
+    border: 1px solid var(--cyan);
+    color: var(--cyan);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    transition: 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Mobile: Stack them vertically if the screen is too small */
+@media (max-width: 850px) {
+    .project-layout {
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
+
+    .project-info {
+        text-align: center;
+    }
+
+    .download-buttons {
+        justify-content: center;
+    }
+}

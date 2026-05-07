@@ -20,9 +20,14 @@
 
         <!-- SLIDE 1: JUST THE TITLE -->
         <section class="snap-section hero">
-            <div class="container">
-                <h1 class="slide-up">JasperGold <br> Visuals</h1>
-                <div class="scroll-hint">Scroll to Explore ↓</div>
+            <canvas id="hero-canvas"></canvas>
+
+            <div class="container hero-content">
+                <h1 class="glitch-text" data-text="JASPERGOLD">JASPERGOLD <br> VISUALS</h1>
+                <div class="scroll-hint">
+                    <span class="mouse"></span>
+                    <p>Scroll to Explore</p>
+                </div>
             </div>
         </section>
 
@@ -172,31 +177,31 @@
                 <div class="team-wrapper">
                     <div class="team-card">
                         <img src="member1.png" alt="Member 1">
-                        <h3>Member 1</h3>
+                        <h3>Charan</h3>
                         <p>Verification Engineer</p>
                     </div>
 
                     <div class="team-card">
                         <img src="member4.jpeg" alt="Member 2">
-                        <h3>Member 2</h3>
+                        <h3>Surya Ganesh</h3>
                         <p>FPV Specialist</p>
                     </div>
 
                     <div class="team-card">
                         <img src="member3.png" alt="Member 3">
-                        <h3>Member 3</h3>
+                        <h3>Likitha Kavya</h3>
                         <p>CDC Expert</p>
                     </div>
 
                     <div class="team-card">
                         <img src="member5.jpeg" alt="Member 4">
-                        <h3>Member 4</h3>
+                        <h3>Srinivas</h3>
                         <p>Connectivity Lead</p>
                     </div>
 
                     <div class="team-card">
                         <img src="member2.png" alt="Member 5">
-                        <h3>Member 5</h3>
+                        <h3>Manohar</h3>
                         <p>Low Power Engineer</p>
                     </div>
                 </div>
@@ -207,12 +212,31 @@
     <!-- 1. SUB-PAGE: FPV -->
     <div id="page-fpv" class="page container">
         <button class="back-btn" onclick="goHome()">← BACK TO DASHBOARD</button>
-        <div class="content-layout">
-            <div>
-                <h2 style="color: var(--cyan); margin-bottom: 15px;">Functional Property Verification (FPV)</h2>
-                <p>JasperGold FPV is the industry's highest-capacity formal solver. it proves SystemVerilog Assertions
-                    (SVA)
-                    across all design states to catch deep corner-case bugs.</p>
+
+        <div class="detailed-layout">
+            <div class="info-side">
+                <h2 class="sub-page-title">Functional Property Verification (FPV)</h2>
+                <p class="description">
+                    JasperGold FPV is the industry's highest-capacity formal solver. It allows engineers to prove
+                    SystemVerilog Assertions (SVA) across all design states, ensuring that bugs are caught
+                    mathematically rather than through random testing.
+                </p>
+
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Exhaustive State Space Search</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Deep Bug Hunting (Corner Cases)</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Root Cause Analysis & Debugging</span>
+                    </div>
+                </div>
+
                 <div class="chip-viz">
                     // SVA Verification Logic <br>
                     property req_gnt_check; <br>
@@ -221,9 +245,18 @@
                     assert_check: assert property(req_gnt_check);
                 </div>
             </div>
-            <div class="video-box">
-                <i class="fas fa-play-circle" style="font-size: 2.5rem; color: var(--purple); margin-bottom: 10px;"></i>
-                <p>FPV Engine Demonstration</p>
+
+            <div class="visual-side">
+                <div class="image-gallery">
+                    <div class="gallery-item glass">
+                        <img src="FPV.webp" alt="FPV Workflow">
+                        <p>Formal Workflow</p>
+                    </div>
+                    <div class="gallery-item glass">
+                        <img src="result_fpv.jpg" alt="Results View">
+                        <p>Proof Results</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -231,18 +264,68 @@
     <!-- 2. SUB-PAGE: CONNECTIVITY -->
     <div id="page-conn" class="page container">
         <button class="back-btn" onclick="goHome()">← BACK TO DASHBOARD</button>
-        <div class="content-layout">
-            <div>
-                <h2 style="color: var(--cyan); margin-bottom: 15px;">Connectivity Verification</h2>
-                <p>Automate the verification of SoC-level wiring. It structurally proves signal paths, identifies
-                    inversions, and detects floating pins in massive netlists.</p>
+
+        <div class="detailed-layout">
+            <div class="info-side">
+                <h2 class="sub-page-title">Connectivity Verification</h2>
+
+                <section class="info-block">
+                    <h3><i class="fas fa-cog"></i> How it Works</h3>
+                    <p>JasperGold Connectivity Verification uses formal algorithms to structurally and functionally
+                        prove
+                        that signals are correctly routed across the SoC. Instead of running millions of simulation
+                        cycles
+                        to toggle a path, it mathematically confirms the connection from 'Point A' to 'Point B'
+                        instantly.
+                    </p>
+                </section>
+
+                <section class="info-block">
+                    <h3><i class="fas fa-map-marker-alt"></i> Where We Use It</h3>
+                    <p>It is primarily used in <b>SoC Integration</b> to verify:</p>
+                    <ul class="content-list">
+                        <li>Top-level pad-ring to core logic wiring.</li>
+                        <li>Bus fabric connections (APB/AHB/AXI).</li>
+                        <li>Register file to peripheral port mapping.</li>
+                        <li>Ensuring DFT (Design for Test) structures are correctly hooked up.</li>
+                    </ul>
+                </section>
+
+                <div class="pros-cons-grid">
+                    <div class="pc-box">
+                        <h4 style="color: #00ff88;">Advantages</h4>
+                        <ul>
+                            <li>Exhaustive: Checks 100% of pins.</li>
+                            <li>Fast: Setup takes minutes, not weeks.</li>
+                            <li>Automatic: Detects floating pins & inversions.</li>
+                        </ul>
+                    </div>
+                    <div class="pc-box">
+                        <h4 style="color: #ff4444;">Disadvantages</h4>
+                        <ul>
+                            <li>Limited to wiring (not complex logic).</li>
+                            <li>Requires clean UPF for power-aware checks.</li>
+                        </ul>
+                    </div>
+                </div>
+
                 <div class="chip-viz">
-                    // Connectivity Command <br>
-                    check_conn -from {TOP.cpu_out} -to {TOP.mem_in} -expected 1
+                    // JasperGold Connectivity Command <br>
+                    check_conn -from {TOP.cpu_inst.addr_out} -to {TOP.mem_inst.addr_in} -expected 1
                 </div>
             </div>
-            <div class="video-box">
-                <p>SoC Wiring Map Visualization</p>
+
+            <div class="visual-side">
+                <div class="image-gallery">
+                    <div class="gallery-item glass">
+                        <img src="SoC_Connectivity_Map.svg" alt="SoC Connectivity Map">
+                        <p>Structural Wiring Map</p>
+                    </div>
+                    <div class="gallery-item glass">
+                        <img src="Connectivity_Debug_View.png" alt="Connectivity Debug View">
+                        <p>Inversion & Open Pin Detection</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -250,14 +333,65 @@
     <!-- 3. SUB-PAGE: CDC -->
     <div id="page-cdc" class="page container">
         <button class="back-btn" onclick="goHome()">← BACK TO DASHBOARD</button>
-        <div class="content-layout">
-            <div>
-                <h2 style="color: var(--cyan); margin-bottom: 15px;">CDC / RDC Verification</h2>
-                <p>Manage Clock Domain and Reset Domain Crossings. It formally proves that synchronizers are correctly
-                    implemented to prevent metastability in multi-clock designs.</p>
+
+        <div class="detailed-layout">
+            <div class="info-side">
+                <h2 class="sub-page-title">CDC / RDC Verification</h2>
+
+                <section class="info-block">
+                    <h3><i class="fas fa-microchip"></i> How it Works</h3>
+                    <p>JasperGold CDC formally analyzes all signals crossing between different clock domains. It
+                        identifies
+                        structural issues like missing synchronizers and then uses formal engines to prove that data
+                        transfer protocols (like Handshaking or Gray coding) are robust against metastability.</p>
+                </section>
+
+                <section class="info-block">
+                    <h3><i class="fas fa-project-diagram"></i> Where We Use It</h3>
+                    <p>Essential for high-speed SoC designs involving multiple asynchronous clocks, such as:</p>
+                    <ul class="content-list">
+                        <li>Interfacing between a slow Peripheral Bus (APB) and a fast Processor Clock.</li>
+                        <li>Verifying Reset Domain Crossings (RDC) to prevent glitches during power-up.</li>
+                        <li>Asynchronous FIFO controllers in networking hardware.</li>
+                    </ul>
+                </section>
+
+                <div class="pros-cons-grid">
+                    <div class="pc-box">
+                        <h4 style="color: #00ff88;">Advantages</h4>
+                        <ul>
+                            <li>Finds <b>Metastability</b> bugs simulation misses.</li>
+                            <li>Structural and Functional Proofs.</li>
+                            <li>Handles complex Reset sequences.</li>
+                        </ul>
+                    </div>
+                    <div class="pc-box">
+                        <h4 style="color: #ff4444;">Disadvantages</h4>
+                        <ul>
+                            <li>Requires strict SDC (Constraints) setup.</li>
+                            <li>High complexity in large designs.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="chip-viz">
+                    // CDC Structural Check <br>
+                    cdc_check -type synchronizer -from clk_a -to clk_b <br>
+                    // Result: Proved Metastability-free
+                </div>
             </div>
-            <div class="video-box">
-                <p>Metastability Analysis View</p>
+
+            <div class="visual-side">
+                <div class="image-gallery">
+                    <div class="gallery-item glass">
+                        <img src="cdc-synchronizer.png" alt="2-Flip-Flop Synchronizer">
+                        <p>2-FF Synchronizer Analysis</p>
+                    </div>
+                    <div class="gallery-item glass">
+                        <img src="cdc-schematic.png" alt="CDC Path Schematic">
+                        <p>Formal Path Tracing View</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -265,15 +399,67 @@
     <!-- 4. SUB-PAGE: SIGNOFF -->
     <div id="page-sign" class="page container">
         <button class="back-btn" onclick="goHome()">← BACK TO DASHBOARD</button>
-        <div class="content-layout">
-            <div>
-                <h2 style="color: var(--cyan); margin-bottom: 15px;">Formal Signoff & Coverage</h2>
-                <p>Closing the verification gap by identifying unreachable code. Provides formal-specific coverage
-                    metrics
-                    to ensure a design is 100% bug-free for tape-out.</p>
+
+        <div class="detailed-layout">
+            <div class="info-side">
+                <h2 class="sub-page-title">Formal Signoff & Coverage</h2>
+
+                <section class="info-block">
+                    <h3><i class="fas fa-file-signature"></i> How it Works</h3>
+                    <p>Formal Signoff uses "Unreachability Analysis" to prove that certain parts of the RTL code can
+                        never
+                        be triggered, regardless of the input. It complements simulation by identifying "dead code" and
+                        ensuring that every assertion has been mathematically proven (Full Proof) rather than just "not
+                        failing yet."</p>
+                </section>
+
+                <section class="info-block">
+                    <h3><i class="fas fa-crosshairs"></i> Where We Use It</h3>
+                    <p>Crucial for the final stages of the design cycle before tape-out:</p>
+                    <ul class="content-list">
+                        <li><b>Coverage Hole Analysis:</b> Finding why certain coverage points aren't hit in simulation.
+                        </li>
+                        <li><b>Proof Core:</b> Identifying the minimum set of logic required to prove a property.</li>
+                        <li><b>Safe-to-Remove Code:</b> Identifying redundant logic to save area and power.</li>
+                    </ul>
+                </section>
+
+                <div class="pros-cons-grid">
+                    <div class="pc-box">
+                        <h4 style="color: #00ff88;">Advantages</h4>
+                        <ul>
+                            <li>Provides 100% Confidence for Tape-out.</li>
+                            <li>Eliminates unreachable "Dead Code".</li>
+                            <li>Reduces simulation time by focused testing.</li>
+                        </ul>
+                    </div>
+                    <div class="pc-box">
+                        <h4 style="color: #ff4444;">Disadvantages</h4>
+                        <ul>
+                            <li>"Over-constrained" designs can give false passes.</li>
+                            <li>Requires high computational memory for large SoCs.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="chip-viz">
+                    // Formal Coverage Metric <br>
+                    report_coverage -summary -formal <br>
+                    // Status: 100% Bound Proven | 0 Unreachable Blocks
+                </div>
             </div>
-            <div class="video-box">
-                <p>Coverage Closure Report</p>
+
+            <div class="visual-side">
+                <div class="image-gallery">
+                    <div class="gallery-item glass">
+                        <img src="signoff-dashboard.png" alt="Formal Coverage Dashboard">
+                        <p>Signoff Progress Tracker</p>
+                    </div>
+                    <div class="gallery-item glass">
+                        <img src="coverage-map.png" alt="Code Coverage Map">
+                        <p>Unreachability Analysis View</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -281,14 +467,70 @@
     <!-- 5. SUB-PAGE: SYNTH -->
     <div id="page-synth" class="page container">
         <button class="back-btn" onclick="goHome()">← BACK TO DASHBOARD</button>
-        <div class="content-layout">
-            <div>
-                <h2 style="color: var(--cyan); margin-bottom: 15px;">Property Synthesis</h2>
-                <p>Automatically generates SystemVerilog Assertions (SVA) by observing RTL behavior. This jumpstarts
-                    verification for legacy code where no assertions exist.</p>
+
+        <div class="detailed-layout">
+            <div class="info-side">
+                <h2 class="sub-page-title">Property Synthesis (Synth)</h2>
+
+                <section class="info-block">
+                    <h3><i class="fas fa-magic"></i> How it Works</h3>
+                    <p>JasperGold Property Synthesis automatically generates SystemVerilog Assertions (SVA) by analyzing
+                        the
+                        RTL behavior. It "observes" the design intent and creates a set of properties that describe how
+                        the
+                        hardware is supposed to behave. This is often called "mining" for properties.</p>
+                </section>
+
+                <section class="info-block">
+                    <h3><i class="fas fa-history"></i> Where We Use It</h3>
+                    <p>This is a lifesaver for working with existing designs and rapid prototyping:</p>
+                    <ul class="content-list">
+                        <li><b>Legacy Code:</b> Adding verification to old RTL that lacks documentation.</li>
+                        <li><b>Assertion Jumpstart:</b> Generating a baseline of SVAs that engineers can later refine.
+                        </li>
+                        <li><b>Protocol Extraction:</b> Understanding complex bus behaviors by seeing generated rules.
+                        </li>
+                    </ul>
+                </section>
+
+                <div class="pros-cons-grid">
+                    <div class="pc-box">
+                        <h4 style="color: #00ff88;">Advantages</h4>
+                        <ul>
+                            <li>Massive time saver in testbench creation.</li>
+                            <li>Uncovers hidden design behaviors.</li>
+                            <li>Creates portable SVAs for other tools.</li>
+                        </ul>
+                    </div>
+                    <div class="pc-box">
+                        <h4 style="color: #ff4444;">Disadvantages</h4>
+                        <ul>
+                            <li>May generate "noise" (too many simple properties).</li>
+                            <li>Requires manual review to ensure intent is correct.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="chip-viz">
+                    // Auto-Generated Property Example <br>
+                    // Generated by JasperGold Synth <br>
+                    property auto_ack_check; <br>
+                    &nbsp;&nbsp;@(posedge clk) (state == IDLE && req) |-> ##1 (state == BUSY); <br>
+                    endproperty
+                </div>
             </div>
-            <div class="video-box">
-                <p>Auto-SVA Extraction Demo</p>
+
+            <div class="visual-side">
+                <div class="image-gallery">
+                    <div class="gallery-item glass">
+                        <img src="synth-flow.png" alt="Property Synthesis Flow">
+                        <p>RTL to SVA Extraction Flow</p>
+                    </div>
+                    <div class="gallery-item glass">
+                        <img src="sva-list.png" alt="Generated SVA List">
+                        <p>Generated Assertion Dashboard</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -296,14 +538,70 @@
     <!-- 6. SUB-PAGE: LP -->
     <div id="page-lp" class="page container">
         <button class="back-btn" onclick="goHome()">← BACK TO DASHBOARD</button>
-        <div class="content-layout">
-            <div>
-                <h2 style="color: var(--cyan); margin-bottom: 15px;">Low Power (UPF) Verification</h2>
-                <p>Verifies designs using Unified Power Format (UPF). It formally proves that isolation cells and level
-                    shifters operate correctly during power-down/up sequences.</p>
+
+        <div class="detailed-layout">
+            <div class="info-side">
+                <h2 class="sub-page-title">Low Power (UPF) Verification</h2>
+
+                <section class="info-block">
+                    <h3><i class="fas fa-battery-quarter"></i> How it Works</h3>
+                    <p>JasperGold LP uses formal analysis to verify designs with multiple power domains. It reads the
+                        RTL
+                        along with the <b>UPF (Unified Power Format)</b> file to ensure that isolation cells, level
+                        shifters, and retention registers are correctly implemented. It proves that a "powered-down"
+                        block
+                        cannot send "X" (unknown) values to an active block.</p>
+                </section>
+
+                <section class="info-block">
+                    <h3><i class="fas fa-plug"></i> Where We Use It</h3>
+                    <p>Essential for mobile and battery-operated devices (SoC design):</p>
+                    <ul class="content-list">
+                        <li><b>Power Shut-off (PSO):</b> Verifying blocks that turn off completely to save leakage.</li>
+                        <li><b>Multi-Voltage Rails:</b> Ensuring level shifters correctly translate signals between 0.8V
+                            and
+                            1.2V domains.</li>
+                        <li><b>Retention Logic:</b> Checking if data is saved correctly before a domain powers down.
+                        </li>
+                    </ul>
+                </section>
+
+                <div class="pros-cons-grid">
+                    <div class="pc-box">
+                        <h4 style="color: #00ff88;">Advantages</h4>
+                        <ul>
+                            <li>Exhaustive check of Power-Up/Down sequences.</li>
+                            <li>Finds "X-propagation" issues in structural logic.</li>
+                            <li>Reduces reliance on power-aware gate-level sims.</li>
+                        </ul>
+                    </div>
+                    <div class="pc-box">
+                        <h4 style="color: #ff4444;">Disadvantages</h4>
+                        <ul>
+                            <li>Highly dependent on the quality of the UPF file.</li>
+                            <li>Complex state-space when many power domains overlap.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="chip-viz">
+                    // UPF Verification Command <br>
+                    verify_lp -upf top.upf -design top_rtl <br>
+                    // Result: Isolation Cell at Path {TOP.core_to_io} Proved Correct
+                </div>
             </div>
-            <div class="video-box">
-                <p>Power Domain Analysis</p>
+
+            <div class="visual-side">
+                <div class="image-gallery">
+                    <div class="gallery-item glass">
+                        <img src="lp-iso-cell.png" alt="Isolation Cell Diagram">
+                        <p>Isolation Cell Verification</p>
+                    </div>
+                    <div class="gallery-item glass">
+                        <img src="power-domains.png" alt="Multi-Voltage Power Domains">
+                        <p>SoC Power Domain Map</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -311,15 +609,69 @@
     <!-- 7. SUB-PAGE: SEC -->
     <div id="page-sec" class="page container">
         <button class="back-btn" onclick="goHome()">← BACK TO DASHBOARD</button>
-        <div class="content-layout">
-            <div>
-                <h2 style="color: var(--cyan); margin-bottom: 15px;">Security Path Verification</h2>
-                <p>Ensures hardware security by performing formal Taint Analysis. It proves that sensitive data (like
-                    keys)
-                    never leaks to unauthorized non-secure ports.</p>
+
+        <div class="detailed-layout">
+            <div class="info-side">
+                <h2 class="sub-page-title">Security Path Verification</h2>
+
+                <section class="info-block">
+                    <h3><i class="fas fa-user-shield"></i> How it Works</h3>
+                    <p>JasperGold SEC uses <b>Formal Taint Analysis</b> to track the flow of sensitive information. It
+                        labels specific data (like an encryption key) as "tainted" and mathematically proves that there
+                        is
+                        no possible sequence of cycles that allows this data to reach a non-secure output port. It
+                        ensures
+                        that hardware "firewalls" are truly unbreachable.</p>
+                </section>
+
+                <section class="info-block">
+                    <h3><i class="fas fa-key"></i> Where We Use It</h3>
+                    <p>Critical for chips handling private user data, such as Mobile SoCs and Automotive ICs:</p>
+                    <ul class="content-list">
+                        <li><b>Root of Trust (RoT):</b> Protecting the boot sequence and master keys.</li>
+                        <li><b>Side-Channel Prevention:</b> Ensuring timing differences don't leak secret info.</li>
+                        <li><b>Secure Enclaves:</b> Verifying the isolation between Secure and Non-Secure worlds (e.g.,
+                            ARM
+                            TrustZone).</li>
+                    </ul>
+                </section>
+
+                <div class="pros-cons-grid">
+                    <div class="pc-box">
+                        <h4 style="color: #00ff88;">Advantages</h4>
+                        <ul>
+                            <li>Exhaustive: Proves 100% data isolation.</li>
+                            <li>Finds architectural "backdoors" in logic.</li>
+                            <li>Automates complex Taint Analysis.</li>
+                        </ul>
+                    </div>
+                    <div class="pc-box">
+                        <h4 style="color: #ff4444;">Disadvantages</h4>
+                        <ul>
+                            <li>Difficult to define all "Taint" sources.</li>
+                            <li>Formal state-space grows with complex logic.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="chip-viz">
+                    // Security Taint Command <br>
+                    sec_check -taint {TOP.security_module.key_reg} -to {TOP.uart_tx_out} <br>
+                    // Result: PROVED - No Information Leak Detected
+                </div>
             </div>
-            <div class="video-box">
-                <p>Security Vulnerability Check</p>
+
+            <div class="visual-side">
+                <div class="image-gallery">
+                    <div class="gallery-item glass">
+                        <img src="sec-taint-analysis.png" alt="Taint Analysis Diagram">
+                        <p>Taint Propagation Map</p>
+                    </div>
+                    <div class="gallery-item glass">
+                        <img src="secure-vs-nonsecure.png" alt="Hardware Firewall Isolation">
+                        <p>Secure/Non-Secure Isolation View</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -327,15 +679,69 @@
     <!-- 8. SUB-PAGE: SLEC -->
     <div id="page-slec" class="page container">
         <button class="back-btn" onclick="goHome()">← BACK TO DASHBOARD</button>
-        <div class="content-layout">
-            <div>
-                <h2 style="color: var(--cyan); margin-bottom: 15px;">Sequential Logic Equivalence (SLEC)</h2>
-                <p>Proves that two designs are functionally identical over time. Used to verify RTL vs. optimized
-                    netlists
-                    or hardware acceleration blocks.</p>
+
+        <div class="detailed-layout">
+            <div class="info-side">
+                <h2 class="sub-page-title">Sequential Logic Equivalence (SLEC)</h2>
+
+                <section class="info-block">
+                    <h3><i class="fas fa-equals"></i> How it Works</h3>
+                    <p>Unlike standard equivalence checking (LEC) which only looks at combinational logic, <b>SLEC</b>
+                        proves that two designs are functionally identical across multiple clock cycles. It compares a
+                        "Golden" model (like C++/SystemC or an older RTL) against a "Revised" model (optimized RTL) to
+                        ensure their outputs match for every possible input sequence.</p>
+                </section>
+
+                <section class="info-block">
+                    <h3><i class="fas fa-microchip"></i> Where We Use It</h3>
+                    <p>SLEC is the ultimate tool for verifying architectural changes and optimizations:</p>
+                    <ul class="content-list">
+                        <li><b>C-to-RTL Verification:</b> Proving that a hardware implementation matches its high-level
+                            algorithm.</li>
+                        <li><b>ECO Verification:</b> Ensuring that "Engineering Change Orders" only fixed the intended
+                            bug
+                            without breaking anything else.</li>
+                        <li><b>Hardware Accelerators:</b> Verifying complex math units or DSP blocks against a reference
+                            model.</li>
+                    </ul>
+                </section>
+
+                <div class="pros-cons-grid">
+                    <div class="pc-box">
+                        <h4 style="color: #00ff88;">Advantages</h4>
+                        <ul>
+                            <li>Eliminates the need for massive "Golden" testbenches.</li>
+                            <li>Finds sequential bugs that LEC cannot detect.</li>
+                            <li>Supports cross-language comparison (C++ vs. Verilog).</li>
+                        </ul>
+                    </div>
+                    <div class="pc-box">
+                        <h4 style="color: #ff4444;">Disadvantages</h4>
+                        <ul>
+                            <li>State-space explosion on very deep pipelines.</li>
+                            <li>Requires careful alignment of input/output boundaries.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="chip-viz">
+                    // SLEC Comparison Setup <br>
+                    compare_designs -golden {REF_MODEL} -revised {OPT_RTL} <br>
+                    // Result: PROVED - Designs are Functionally Equivalent
+                </div>
             </div>
-            <div class="video-box">
-                <p>Logic Equivalence Comparison</p>
+
+            <div class="visual-side">
+                <div class="image-gallery">
+                    <div class="gallery-item glass">
+                        <img src="slec-comparison.png" alt="SLEC Comparison Flow">
+                        <p>Golden vs. Revised Model Comparison</p>
+                    </div>
+                    <div class="gallery-item glass">
+                        <img src="slec-pipeline.png" alt="Pipeline Equivalence">
+                        <p>Sequential Pipeline Alignment View</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

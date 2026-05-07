@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JasperGold | Formal Experience</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=JetBrains+Mono&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="bg-grid"></div>
+
+    <!-- SCROLL SNAP WRAPPER -->
+    <div class="snap-container" id="main-view">
+
+        <!-- SLIDE 1: JUST THE TITLE -->
+        <section class="snap-section hero">
+            <div class="container">
+                <h1 class="slide-up">JasperGold <br> Visuals</h1>
+                <div class="scroll-hint">Scroll to Explore ↓</div>
+            </div>
+        </section>
+
+        <!-- SLIDE 2: THE CORE MODULES MATRIX -->
+        <section class="snap-section grid-section">
+            <div class="container">
+                <h2 class="section-tag">VERIFICATION ECOSYSTEM</h2>
+                <div class="matrix-grid">
+                    <!-- 1 -->
+                    <div class="glass card" onclick="navigateTo('fpv')">
+                        <i class="fas fa-microchip"></i>
+                        <h3>FPV</h3>
+                        <p>Functional Logic</p>
+                    </div>
+                    <!-- 2 -->
+                    <div class="glass card" onclick="navigateTo('conn')">
+                        <i class="fas fa-project-diagram"></i>
+                        <h3>Connectivity</h3>
+                        <p>SoC Wiring</p>
+                    </div>
+                    <!-- 3 -->
+                    <div class="glass card" onclick="navigateTo('cdc')">
+                        <i class="fas fa-bolt"></i>
+                        <h3>CDC / RDC</h3>
+                        <p>Clock Domains</p>
+                    </div>
+                    <!-- 4 -->
+                    <div class="glass card" onclick="navigateTo('sign')">
+                        <i class="fas fa-chart-bar"></i>
+                        <h3>Signoff</h3>
+                        <p>Final Coverage</p>
+                    </div>
+                    <!-- 5 -->
+                    <div class="glass card" onclick="navigateTo('synth')">
+                        <i class="fas fa-vial"></i>
+                        <h3>Synth</h3>
+                        <p>Auto SVA</p>
+                    </div>
+                    <!-- 6 -->
+                    <div class="glass card" onclick="navigateTo('lp')">
+                        <i class="fas fa-battery-half"></i>
+                        <h3>Low Power</h3>
+                        <p>UPF Checks</p>
+                    </div>
+                    <!-- 7 -->
+                    <div class="glass card" onclick="navigateTo('sec')">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Security</h3>
+                        <p>Leak Analysis</p>
+                    </div>
+                    <!-- 8 -->
+                    <div class="glass card" onclick="navigateTo('slec')">
+                        <i class="fas fa-equals"></i>
+                        <h3>SLEC</h3>
+                        <p>Equivalence</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- SLIDE 3: FULL SCREEN COMPARISON -->
+        <section class="snap-section comparison-slide">
+            <div class="container">
+                <h2 class="section-tag">BENCHMARK</h2>
+                <h1 class="table-headline">Simulation vs. Formal</h1>
+
+                <div class="glass table-container">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Metric</th>
+                                <th>Standard Simulation</th>
+                                <th>JasperGold Formal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="label">Coverage Type</td>
+                                <td>Probabilistic (Stimulus)</td>
+                                <td class="accent-cell">Exhaustive (Mathematical)</td>
+                            </tr>
+                            <tr>
+                                <td class="label">Corner Cases</td>
+                                <td>Hard to hit manually</td>
+                                <td class="accent-cell">Guaranteed detection</td>
+                            </tr>
+                            <tr>
+                                <td class="label">Test Environment</td>
+                                <td>UVM / Testbench</td>
+                                <td class="accent-cell">SVA / Assertions</td>
+                            </tr>
+                            <tr>
+                                <td class="label">Execution Time</td>
+                                <td>Depends on simulation cycles</td>
+                                <td class="accent-cell">Rapid (Static Analysis)</td>
+                            </tr>
+                            <tr>
+                                <td class="label">Result Type</td>
+                                <td>Pass / Fail on vectors</td>
+                                <td class="accent-cell">Mathematical Proof</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 4: PROJECT DETAILS -->
+        <section class="snap-section project-slide">
+            <div class="container">
+                <h2 class="section-tag">PROJECT DETAILS</h2>
+                <h1 class="table-headline">Project Resources</h1>
+
+                <div class="project-layout glass">
+                    <div class="project-image">
+                        <img src="JasperGold.png" alt="Project Logic Diagram">
+                    </div>
+
+                    <div class="project-info">
+                        <h3>Problem Statement</h3>
+                        <p class="problem-text">
+                            Traditional simulation-based verification often misses deep corner-case bugs in complex SoC
+                            designs.
+                            Our goal was to implement <b>JasperGold Formal Verification</b> to prove functional
+                            correctness
+                            exhaustively, reducing verification time by 40% and ensuring 100% bug detection in the FPV
+                            unit.
+                        </p>
+
+                        <div class="download-buttons">
+                            <a href="files/project-presentation.pptx" download class="download-btn">
+                                <i class="fas fa-file-powerpoint"></i> PPT
+                            </a>
+                            <a href="files/project-report.pdf" download class="download-btn">
+                                <i class="fas fa-file-pdf"></i> PDF
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- SLIDE 5: TEAM INFO -->
+        <section class="snap-section team-slide">
+            <div class="container">
+                <h2 class="section-tag">TEAM INFO</h2>
+                <h1 class="table-headline">Our Team</h1>
+
+                <div class="team-wrapper">
+                    <div class="team-card">
+                        <img src="member1.png" alt="Member 1">
+                        <h3>Member 1</h3>
+                        <p>Verification Engineer</p>
+                    </div>
+
+                    <div class="team-card">
+                        <img src="member4.jpeg" alt="Member 2">
+                        <h3>Member 2</h3>
+                        <p>FPV Specialist</p>
+                    </div>
+
+                    <div class="team-card">
+                        <img src="member3.png" alt="Member 3">
+                        <h3>Member 3</h3>
+                        <p>CDC Expert</p>
+                    </div>
+
+                    <div class="team-card">
+                        <img src="member5.jpeg" alt="Member 4">
+                        <h3>Member 4</h3>
+                        <p>Connectivity Lead</p>
+                    </div>
+
+                    <div class="team-card">
+                        <img src="member2.png" alt="Member 5">
+                        <h3>Member 5</h3>
+                        <p>Low Power Engineer</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 1. SUB-PAGE: FPV -->
+    <div id="page-fpv" class="page container">
+        <button class="back-btn" onclick="goHome()">← BACK TO DASHBOARD</button>
+        <div class="content-layout">
+            <div>
+                <h2 style="color: var(--cyan); margin-bottom: 15px;">Functional Property Verification (FPV)</h2>
+                <p>JasperGold FPV is the industry's highest-capacity formal solver. it proves SystemVerilog Assertions
+                    (SVA)
+                    across all design states to catch deep corner-case bugs.</p>
+                <div class="chip-viz">
+                    // SVA Verification Logic <br>
+                    property req_gnt_check; <br>
+                    &nbsp;&nbsp;@(posedge clk) req |-> ##[1:4] gnt; <br>
+                    endproperty <br>
+                    assert_check: assert property(req_gnt_check);
+                </div>
+            </div>
+            <div class="video-box">
+                <i class="fas fa-play-circle" style="font-size: 2.5rem; color: var(--purple); margin-bottom: 10px;"></i>
+                <p>FPV Engine Demonstration</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. SUB-PAGE: CONNECTIVITY -->
+    <div id="page-conn" class="page container">
+        <button class="back-btn" onclick="goHome()">← BACK TO DASHBOARD</button>
+        <div class="content-layout">
+            <div>
+                <h2 style="color: var(--cyan); margin-bottom: 15px;">Connectivity Verification</h2>
+                <p>Automate the verification of SoC-level wiring. It structurally proves signal paths, identifies
+                    inversions, and detects floating pins in massive netlists.</p>
+                <div class="chip-viz">
+                    // Connectivity Command <br>
+                    check_conn -from {TOP.cpu_out} -to {TOP.mem_in} -expected 1
+                </div>
+            </div>
+            <div class="video-box">
+                <p>SoC Wiring Map Visualization</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. SUB-PAGE: CDC -->
+    <div id="page-cdc" class="page container">
+        <button class="back-btn" onclick="goHome()">← BACK TO DASHBOARD</button>
+        <div class="content-layout">
+            <div>
+                <h2 style="color: var(--cyan); margin-bottom: 15px;">CDC / RDC Verification</h2>
+                <p>Manage Clock Domain and Reset Domain Crossings. It formally proves that synchronizers are correctly
+                    implemented to prevent metastability in multi-clock designs.</p>
+            </div>
+            <div class="video-box">
+                <p>Metastability Analysis View</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. SUB-PAGE: SIGNOFF -->
+    <div id="page-sign" class="page container">
+        <button class="back-btn" onclick="goHome()">← BACK TO DASHBOARD</button>
+        <div class="content-layout">
+            <div>
+                <h2 style="color: var(--cyan); margin-bottom: 15px;">Formal Signoff & Coverage</h2>
+                <p>Closing the verification gap by identifying unreachable code. Provides formal-specific coverage
+                    metrics
+                    to ensure a design is 100% bug-free for tape-out.</p>
+            </div>
+            <div class="video-box">
+                <p>Coverage Closure Report</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. SUB-PAGE: SYNTH -->
+    <div id="page-synth" class="page container">
+        <button class="back-btn" onclick="goHome()">← BACK TO DASHBOARD</button>
+        <div class="content-layout">
+            <div>
+                <h2 style="color: var(--cyan); margin-bottom: 15px;">Property Synthesis</h2>
+                <p>Automatically generates SystemVerilog Assertions (SVA) by observing RTL behavior. This jumpstarts
+                    verification for legacy code where no assertions exist.</p>
+            </div>
+            <div class="video-box">
+                <p>Auto-SVA Extraction Demo</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. SUB-PAGE: LP -->
+    <div id="page-lp" class="page container">
+        <button class="back-btn" onclick="goHome()">← BACK TO DASHBOARD</button>
+        <div class="content-layout">
+            <div>
+                <h2 style="color: var(--cyan); margin-bottom: 15px;">Low Power (UPF) Verification</h2>
+                <p>Verifies designs using Unified Power Format (UPF). It formally proves that isolation cells and level
+                    shifters operate correctly during power-down/up sequences.</p>
+            </div>
+            <div class="video-box">
+                <p>Power Domain Analysis</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 7. SUB-PAGE: SEC -->
+    <div id="page-sec" class="page container">
+        <button class="back-btn" onclick="goHome()">← BACK TO DASHBOARD</button>
+        <div class="content-layout">
+            <div>
+                <h2 style="color: var(--cyan); margin-bottom: 15px;">Security Path Verification</h2>
+                <p>Ensures hardware security by performing formal Taint Analysis. It proves that sensitive data (like
+                    keys)
+                    never leaks to unauthorized non-secure ports.</p>
+            </div>
+            <div class="video-box">
+                <p>Security Vulnerability Check</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 8. SUB-PAGE: SLEC -->
+    <div id="page-slec" class="page container">
+        <button class="back-btn" onclick="goHome()">← BACK TO DASHBOARD</button>
+        <div class="content-layout">
+            <div>
+                <h2 style="color: var(--cyan); margin-bottom: 15px;">Sequential Logic Equivalence (SLEC)</h2>
+                <p>Proves that two designs are functionally identical over time. Used to verify RTL vs. optimized
+                    netlists
+                    or hardware acceleration blocks.</p>
+            </div>
+            <div class="video-box">
+                <p>Logic Equivalence Comparison</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

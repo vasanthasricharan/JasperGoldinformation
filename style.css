@@ -807,3 +807,169 @@ section,
 .pc-box ul li {
     margin-bottom: 5px;
 }
+
+/* =========================================
+   MOBILE RESPONSIVE FIXES (PASTE AT END)
+========================================= */
+
+@media (max-width: 768px) {
+
+    /* General container spacing */
+    .container {
+        padding: 0 15px;
+    }
+
+    /* Hero Section */
+    .hero {
+        min-height: 100vh;
+        padding: 20px 0;
+    }
+
+    .glitch-text {
+        font-size: clamp(2.2rem, 9vw, 3.5rem);
+        line-height: 1.1;
+        letter-spacing: 0;
+    }
+
+    .scroll-hint p {
+        font-size: 0.9rem;
+    }
+
+    /* Grid Cards */
+    .grid-section {
+        padding: 30px 0;
+        min-height: auto;
+    }
+
+    .matrix-grid {
+        grid-template-columns: 1fr;
+        height: auto;
+        gap: 18px;
+    }
+
+    .card {
+        min-height: 160px;
+        padding: 20px 15px;
+    }
+
+    .card i {
+        font-size: 2rem;
+    }
+
+    .card h3 {
+        font-size: 1.1rem;
+    }
+
+    .card p {
+        font-size: 0.9rem;
+    }
+
+    /* Comparison Table */
+    .comparison-slide {
+        min-height: auto;
+        padding: 50px 0;
+    }
+
+    .table-container {
+        overflow-x: auto;
+        padding: 10px;
+    }
+
+    .comparison-table {
+        min-width: 700px;
+    }
+
+    .table-headline {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+
+    /* Project Section */
+    .project-layout {
+        grid-template-columns: 1fr;
+        padding: 20px;
+        gap: 25px;
+    }
+
+    .project-info {
+        text-align: center;
+    }
+
+    .download-buttons {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .download-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Sub Pages */
+    .page {
+        padding: 30px 15px;
+    }
+
+    .detailed-layout {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .sub-page-title {
+        font-size: 1.4rem;
+        line-height: 1.4;
+    }
+
+    .description {
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+
+    .chip-viz {
+        font-size: 0.75rem;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    /* Pros / Cons */
+    .pros-cons-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    /* Images */
+    .gallery-item img,
+    .project-image img {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Team Section */
+    .team-wrapper {
+        gap: 25px;
+    }
+
+    .team-card {
+        flex: 0 1 100%;
+    }
+
+    .team-card img {
+        width: 140px;
+        height: 140px;
+    }
+
+    .team-card h3 {
+        font-size: 1rem;
+    }
+
+    .team-card p {
+        font-size: 0.8rem;
+    }
+
+    /* Back Button */
+    .back-btn {
+        width: 100%;
+        text-align: center;
+        padding: 12px;
+    }
+}

@@ -76,18 +76,17 @@ section,
 /* --- GLOBAL DOTS BACKGROUND --- */
 #hero-canvas {
     position: fixed;
-    /* Keeps it fixed while you scroll the main slides */
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1;
-    /* Behind all content */
+
+    z-index: 0;
+    /* changed from -1 */
+
     opacity: 0.6;
     pointer-events: none;
-    /* Allows clicking through the dots to buttons */
     transition: opacity 0.5s ease;
-    /* Smooth fade when switching pages */
 }
 
 /* --- HIDE DOTS ON SUB-PAGES --- */
@@ -100,6 +99,12 @@ section,
     position: relative;
     z-index: 2;
     text-align: center;
+}
+
+/* Make hero section properly show canvas background */
+.hero {
+    position: relative;
+    z-index: 1;
 }
 
 .glitch-text {

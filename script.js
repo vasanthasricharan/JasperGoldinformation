@@ -124,21 +124,6 @@ navigateTo = function (id) {
     }
 };
 
-// Visitor Counter using localStorage
-let visitCount = localStorage.getItem("jasperVisitorCount");
-
-if (!visitCount) {
-    visitCount = 1;
-} else {
-    visitCount = parseInt(visitCount) + 1;
-}
-
-localStorage.setItem("jasperVisitorCount", visitCount);
-
-const visitorElement = document.getElementById("visitor-count");
-if (visitorElement) {
-    visitorElement.textContent = visitCount;
-}
 
 /* ================================
    FIREBASE VISITOR COUNTER
@@ -175,17 +160,23 @@ async function updateVisitorCount() {
     const visitorElement = document.getElementById("visitor-count");
 
     try {
-        const snapshot = await get(visitorRef);
+        // Check if already counted on this browser/device
+        const alreadyVisited = localStorage.getItem("jasperVisited");
 
         let count = 0;
+        const snapshot = await get(visitorRef);
 
         if (snapshot.exists()) {
             count = snapshot.val();
         }
 
-        count++;
+        // Increase count only first time
+        if (!alreadyVisited) {
+            count++;
+            await set(visitorRef, count);
 
-        await set(visitorRef, count);
+            localStorage.setItem("jasperVisited", "true");
+        }
 
         if (visitorElement) {
             visitorElement.textContent = count;

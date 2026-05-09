@@ -123,3 +123,19 @@ navigateTo = function (id) {
         targetPage.classList.add('is-visible');
     }
 };
+
+// Visitor Counter using localStorage
+let visitCount = localStorage.getItem("jasperVisitorCount");
+
+if (!visitCount) {
+    visitCount = 1;
+} else {
+    visitCount = parseInt(visitCount) + 1;
+}
+
+localStorage.setItem("jasperVisitorCount", visitCount);
+
+const visitorElement = document.getElementById("visitor-count");
+if (visitorElement) {
+    visitorElement.textContent = visitCount;
+}

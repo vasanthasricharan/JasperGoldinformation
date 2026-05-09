@@ -192,3 +192,6 @@ async function updateVisitorCount() {
 }
 
 updateVisitorCount();
+
+window.navigateTo = navigateTo;
+window.goHome = goHome;

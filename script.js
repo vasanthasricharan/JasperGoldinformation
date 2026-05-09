@@ -11,7 +11,7 @@ function navigateTo(id) {
     const target = document.getElementById('page-' + id);
     if (target) {
         target.style.display = 'block';
-        window.scrollTo({ top: 0, behavior: 'instant' });
+        window.scrollTo({ top: 0, behavior: 'auto' });
     }
 }
 
@@ -27,7 +27,7 @@ function goHome() {
 
     const gridSection = document.querySelector('.grid-section');
     if (gridSection) {
-        gridSection.scrollIntoView({ behavior: 'instant' });
+        gridSection.scrollIntoView({ behavior: 'auto' });
     }
 }
 

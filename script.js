@@ -139,3 +139,65 @@ const visitorElement = document.getElementById("visitor-count");
 if (visitorElement) {
     visitorElement.textContent = visitCount;
 }
+
+/* ================================
+   FIREBASE VISITOR COUNTER
+================================ */
+
+/* Firebase SDK Imports */
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import {
+    getDatabase,
+    ref,
+    get,
+    set
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+/* Paste YOUR Firebase Config Here */
+const firebaseConfig = {
+    apiKey: "AIzaSyCjPnDgfK9dK22SaIZ2-MWLbddaQuCO9wU",
+    authDomain: "jaspergoldcounter.firebaseapp.com",
+    databaseURL: "https://jaspergoldcounter-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "jaspergoldcounter",
+    storageBucket: "jaspergoldcounter.firebasestorage.app",
+    messagingSenderId: "878156984055",
+    appId: "1:878156984055:web:c885aed38e685d72636df2"
+};
+
+/* Initialize Firebase */
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
+
+/* Visitor Counter Logic */
+const visitorRef = ref(database, "visitorCount");
+
+async function updateVisitorCount() {
+    const visitorElement = document.getElementById("visitor-count");
+
+    try {
+        const snapshot = await get(visitorRef);
+
+        let count = 0;
+
+        if (snapshot.exists()) {
+            count = snapshot.val();
+        }
+
+        count++;
+
+        await set(visitorRef, count);
+
+        if (visitorElement) {
+            visitorElement.textContent = count;
+        }
+
+    } catch (error) {
+        console.error("Visitor Counter Error:", error);
+
+        if (visitorElement) {
+            visitorElement.textContent = "Error";
+        }
+    }
+}
+
+updateVisitorCount();

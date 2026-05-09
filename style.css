@@ -29,6 +29,30 @@ body {
     overflow-x: hidden;
 }
 
+/* Visitor Counter */
+.visitor-counter {
+    margin-top: 20px;
+    font-size: 1rem;
+    color: var(--cyan);
+    font-family: 'JetBrains Mono';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    opacity: 0.9;
+}
+
+.visitor-counter i {
+    color: var(--purple);
+}
+
+@media (max-width: 768px) {
+    .visitor-counter {
+        font-size: 0.9rem;
+        margin-top: 15px;
+    }
+}
+
 /* --- BACKGROUND --- */
 .bg-grid {
     position: fixed;
